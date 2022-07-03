@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Test plan" enabled="true">
+      <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+        <boolProp name="LoopController.continue_forever">false</boolProp>
+        <stringProp name="LoopController.loops">1</stringProp>
+      </elementProp>
+      <stringProp name="ThreadGroup.num_threads">100</stringProp>
+      <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+      <boolProp name="ThreadGroup.scheduler">false</boolProp>
+      <stringProp name="ThreadGroup.duration">0</stringProp>
+      <stringProp name="ThreadGroup.delay">0</stringProp>
+      <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+      <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+    </ThreadGroup>
+    <hashTree>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetCompanies" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/Company/GetCompanies</stringProp>
+        <stringProp name="HTTPSampler.method">GET</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="GetCompanies" enabled="true">
+          <collectionProp name="HeaderManager.headers"/>
+        </HeaderManager>
+        <hashTree/>
+      </hashTree>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetCompaniesPaginated" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="PageNumber" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">PageNumber</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.desc">PageNumber</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">true</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="PageSize" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">PageSize</stringProp>
+              <stringProp name="Argument.value">10</stringProp>
+              <stringProp name="Argument.desc">PageSize</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">true</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="" elementType="HTTPArgument">
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/Company/GetCompaniesPaginated</stringProp>
+        <stringProp name="HTTPSampler.method">GET</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="GetCompaniesPaginated" enabled="true">
+          <collectionProp name="HeaderManager.headers"/>
+        </HeaderManager>
+        <hashTree/>
+      </hashTree>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetCompaniesPaginatedFiltered" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="PageNumber" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">PageNumber</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.desc">PageNumber</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">true</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="PageSize" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">PageSize</stringProp>
+              <stringProp name="Argument.value">10</stringProp>
+              <stringProp name="Argument.desc">PageSize</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">true</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="Name" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">Name</stringProp>
+              <stringProp name="Argument.value">Enbridge</stringProp>
+              <stringProp name="Argument.desc">Name</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">true</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="Address1" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">Address1</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.desc">Address1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="BillingContact" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">BillingContact</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.desc">BillingContact</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="City" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">City</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.desc">City</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="Country" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">Country</stringProp>
+              <stringProp name="Argument.value">Can</stringProp>
+              <stringProp name="Argument.desc">Country</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">true</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="Province" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">Province</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.desc">Province</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="PostalCode" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">PostalCode</stringProp>
+              <stringProp name="Argument.value">T5J 2J9</stringProp>
+              <stringProp name="Argument.desc">PostalCode</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">true</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="CreateBy" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">CreateBy</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.desc">CreateBy</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="" elementType="HTTPArgument">
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/Company/GetCompaniesPaginatedFiltered</stringProp>
+        <stringProp name="HTTPSampler.method">GET</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="GetCompaniesPaginatedFiltered" enabled="true">
+          <collectionProp name="HeaderManager.headers"/>
+        </HeaderManager>
+        <hashTree/>
+      </hashTree>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetCompanyStatus" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-dev.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/Company/GetStatuses</stringProp>
+        <stringProp name="HTTPSampler.method">GET</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="GetCompanyStatus" enabled="true">
+          <collectionProp name="HeaderManager.headers"/>
+        </HeaderManager>
+        <hashTree/>
+      </hashTree>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get user login" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="Username" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">Username</stringProp>
+              <stringProp name="Argument.value">user1</stringProp>
+              <stringProp name="Argument.desc">Username</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+            <elementProp name="Password" elementType="HTTPArgument" enabled="true">
+              <stringProp name="Argument.name">Password</stringProp>
+              <stringProp name="Argument.value">123456</stringProp>
+              <stringProp name="Argument.desc">Password</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/User/Login</stringProp>
+        <stringProp name="HTTPSampler.method">GET</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Get user login" enabled="true">
+          <collectionProp name="HeaderManager.headers"/>
+        </HeaderManager>
+        <hashTree/>
+      </hashTree>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get User Types" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/User/GetUserTypes</stringProp>
+        <stringProp name="HTTPSampler.method">GET</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Get User Types" enabled="true">
+          <collectionProp name="HeaderManager.headers"/>
+        </HeaderManager>
+        <hashTree/>
+      </hashTree>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update company1" enabled="true">
+        <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="" elementType="HTTPArgument">
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <stringProp name="Argument.value">{&#xd;
+  &quot;id&quot;: 442,&#xd;
+  &quot;remoteIp&quot;: &quot;4545ds&quot;,&#xd;
+  &quot;isActive&quot;: true,&#xd;
+  &quot;name&quot;: &quot;strffffffing&quot;,&#xd;
+  &quot;parentCompanyId&quot;: 0,&#xd;
+  &quot;statusId&quot;: 0,&#xd;
+  &quot;address1&quot;: &quot;string&quot;,&#xd;
+  &quot;billingContact&quot;: &quot;string&quot;,&#xd;
+  &quot;city&quot;: &quot;string&quot;,&#xd;
+  &quot;country&quot;: &quot;string&quot;,&#xd;
+  &quot;province&quot;: &quot;string&quot;,&#xd;
+  &quot;postalCode&quot;: &quot;string&quot;,&#xd;
+  &quot;requiresAFE&quot;: true,&#xd;
+  &quot;requiresAllocation&quot;: true,&#xd;
+  &quot;modifyDate&quot;: &quot;2022-06-21T19:43:26.282Z&quot;&#xd;
+}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol"></stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/Company/442?isActive=True&amp;name=testjjj&amp;parentCompanyId=0</stringProp>
+        <stringProp name="HTTPSampler.method">PUT</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree/>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Logs" enabled="true">
+        <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="" elementType="HTTPArgument">
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <stringProp name="Argument.value">{&#xd;
+&#xd;
+  &quot;userName&quot;: &quot;&quot;,&#xd;
+  &quot;type&quot;: &quot;&quot;,&#xd;
+  &quot;dateFrom&quot;: &quot;2022-06-20T16:13:07.919Z&quot;,&#xd;
+  &quot;dateTo&quot;: &quot;2022-06-22T16:13:07.919Z&quot;,&#xd;
+  &quot;remoteIP&quot;: &quot;&quot;,&#xd;
+  &quot;comment&quot;: &quot;&quot;&#xd;
+}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol"></stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/Logging</stringProp>
+        <stringProp name="HTTPSampler.method">POST</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree/>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create company" enabled="true">
+        <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="" elementType="HTTPArgument">
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <stringProp name="Argument.value">{&#xd;
+  &quot;name&quot;: &quot;string&quot;,&#xd;
+  &quot;address1&quot;: &quot;string&quot;,&#xd;
+  &quot;billingContact&quot;: &quot;string&quot;,&#xd;
+  &quot;city&quot;: &quot;string&quot;,&#xd;
+  &quot;country&quot;: &quot;string&quot;,&#xd;
+  &quot;postalCode&quot;: &quot;string&quot;,&#xd;
+  &quot;province&quot;: &quot;string&quot;,&#xd;
+  &quot;isActive&quot;: true,&#xd;
+  &quot;requiresAFE&quot;: true,&#xd;
+  &quot;requiresAllocation&quot;: true,&#xd;
+  &quot;createBy&quot;: &quot;string&quot;,&#xd;
+  &quot;parentCompanyId&quot;: 0,&#xd;
+  &quot;statusId&quot;: 0,&#xd;
+  &quot;remoteIp&quot;: &quot;string&quot;&#xd;
+}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol"></stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/Company</stringProp>
+        <stringProp name="HTTPSampler.method">POST</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree/>
+      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Company Id" enabled="true">
+        <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="" elementType="HTTPArgument">
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <stringProp name="Argument.value">{&#xd;
+  &quot;id&quot;: 3023,&#xd;
+  &quot;remoteIp&quot;: &quot;string&quot;,&#xd;
+  &quot;isActive&quot;: true,&#xd;
+  &quot;name&quot;: &quot;string&quot;,&#xd;
+  &quot;parentCompanyId&quot;: 0,&#xd;
+  &quot;statusId&quot;: 0,&#xd;
+  &quot;address1&quot;: &quot;string&quot;,&#xd;
+  &quot;billingContact&quot;: &quot;string&quot;,&#xd;
+  &quot;city&quot;: &quot;string&quot;,&#xd;
+  &quot;country&quot;: &quot;string&quot;,&#xd;
+  &quot;province&quot;: &quot;string&quot;,&#xd;
+  &quot;postalCode&quot;: &quot;string&quot;,&#xd;
+  &quot;requiresAFE&quot;: true,&#xd;
+  &quot;requiresAllocation&quot;: true&#xd;
+}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">stars-api-qa.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol"></stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/api/Company/3023</stringProp>
+        <stringProp name="HTTPSampler.method">PUT</stringProp>
+        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </HTTPSamplerProxy>
+      <hashTree/>
+      <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
